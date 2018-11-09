@@ -1,0 +1,75 @@
+namespace cooperativa
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double cantidadPatatas;
+            double precioPatatas;
+            double precioBruto;
+            double precioDto;
+            double precioFinal;
+            string tipoCliente;
+
+            Console.WriteLine("Calculadora de precios de patatas de la cooperativa Animous");
+            Console.WriteLine("introduce el nº de kilogramos de patatas: ");
+            cantidadPatatas =double.Parse(Console.ReadLine());
+
+            while (cantidadPatatas < 0)
+            {
+                Console.WriteLine("Cantidad introducida no valida, por favor introduce una cantidad de patatas mayor que 0.");
+                cantidadPatatas = double.Parse(Console.ReadLine());
+            }
+
+            Console.WriteLine("Introduce el precio de las patatas: ");
+            precioPatatas = double.Parse(Console.ReadLine());
+
+            while (precioPatatas < 0)
+            {
+                Console.WriteLine("Cantidad introducida no valida, por favor introduce un precio valido.");
+                precioPatatas = double.Parse(Console.ReadLine());
+            }
+
+            precioBruto = precioPatatas * cantidadPatatas;
+            Console.WriteLine("El precio Bruto del pedido es {0}",precioBruto);
+
+            if (precioBruto>50 && precioBruto <=100)
+            {
+                Console.WriteLine("Se va a aplicar un descuento del 10% para compras superiores a 50 euros.");
+                precioDto = precioBruto * 0.90;
+                Console.WriteLine("El precio del pedido tras el descuento es {0}",precioDto);
+
+            }
+            else if (precioBruto > 100)
+            {
+                Console.WriteLine("Se va a aplicar un descuento del 20% para compras superiores a 100 euros.");
+                precioDto = precioBruto * 0.80;
+                Console.WriteLine("El precio del pedido tras el descuento es de {0}",precioDto);
+            }
+            else
+            {
+                precioDto = precioBruto;
+                Console.WriteLine("Solo se ofrecen descuentos para compras superiores a 50 euros.");
+            }
+
+            Console.WriteLine("Introduce el tipo de cliente, PARTICULAR O EMPRESA.");
+            tipoCliente = Console.ReadLine();
+            
+
+           
+
+            if (tipoCliente == "PARTICULAR")
+            {
+                precioFinal = precioDto * 1.21;
+                Console.WriteLine("El precio final con IVA del 21% es de {0}", precioFinal);
+
+            }
+            else if (tipoCliente == "EMPRESA")
+            {
+                precioFinal = precioDto;
+                Console.WriteLine("El precio final es {0} ya que las compras de empresas no estan sujetas a IVA.",precioFinal);
+
+            }
+            
+
+        }
