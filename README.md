@@ -1,0 +1,2 @@
+# cooperativa
+EJERCICIO 2 DE PAC1DESARROLLO 
